@@ -10,21 +10,15 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *backward, *forward;
-
-	if (!list)
+	listint_t *i;
+	while (list != NULL)
 	{
-		printf("No list found");
-		return (-1);
-		/* Cycle detection */
-		backward = forward = list;
-		while (forward && forward->next && forward->next->next)
+		i = list->next;
+		if (list == i)
 		{
-			backward = backward->next;
-			forward = forward->next->next;
-			if (backward == forward)
-				return (1);
+			return (1);
 		}
+		list = list->next;
 	}
 	return (0);
 }
