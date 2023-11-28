@@ -12,7 +12,7 @@ int main(void)
 {
 	listint_t *head;
 	listint_t *current;
-	int_t *temp;
+	listint_t *temp;
 	int i;
 
 	head = NULL;
