@@ -1,24 +1,26 @@
 #include "lists.h"
-#include <stdio.h>
 
 /**
- * check_cycle - Checks for cycles in singly linked lists.
- * @list: Singly linked list to be checked.
+ * check_cycle - ...
+ * @list: list
  *
- * Return: 0 if no cycles found,
- *         1 if cycles were found.
+ * Return: 0, no head otherwise 1
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *i;
-	while (list != NULL)
+	listint_t *slow, *fast;
+
+	if (!list)
+		return (-1);
+/* floyed cycle detection */
+	slow = list;
+	while (slow->next != NULL)
 	{
-		i = list->next;
-		if (list == i)
-		{
+		fast = slow->next;
+		if (slow == fast)
 			return (1);
-		}
-		list = list->next;
+		slow = slow->next;
 	}
+
 	return (0);
 }
