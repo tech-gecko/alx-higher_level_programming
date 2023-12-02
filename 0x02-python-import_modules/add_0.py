@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-__main__ = False
 def add(a, b):
     """My addition function
 
