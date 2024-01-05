@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" This module contains the class, 'Rectangle'. """
+""" This module contains the class, 'Rectangle' only. """
 
 
 class Rectangle:
