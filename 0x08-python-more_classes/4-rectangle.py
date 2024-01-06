@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ This module contains the class, 'Rectangle'. """
 
+
 class Rectangle:
     """ This class defines a rectangle and all it's properties. """
     def __init__(self, width=0, height=0):
@@ -37,7 +38,8 @@ class Rectangle:
         return self.width * self.height
 
     def perimeter(self):
-        return 2 * (self.width + self.height) if self.width != 0 and self.height != 0 else 0
+        return (2 * (self.width + self.height)
+                if self.width != 0 and self.height != 0 else 0)
 
     def draw_rectangle(self):
         result = ""
