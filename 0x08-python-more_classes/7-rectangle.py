@@ -10,6 +10,7 @@ class Rectangle:
     def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
+        self.print_symbol = Rectangle.print_symbol
         Rectangle.number_of_instances += 1
 
     def __del__(self):
@@ -53,7 +54,7 @@ class Rectangle:
         result = ""
         for i in range(self.height):
             for j in range(self.width):
-                result += str(Rectangle.print_symbol)
+                result += str(self.print_symbol)
             result += "\n"
         return result.rstrip("\n")
 
@@ -61,4 +62,4 @@ class Rectangle:
         return self.draw_rectangle()
 
     def __repr__(self):
-        return f"Rectangle(width={self.width}, height={self.height})"
+        return f"Rectangle({self.width}, {self.height})"
