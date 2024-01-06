@@ -47,7 +47,7 @@ class Rectangle:
             for j in range(self.width):
                 result += "#"
             result += "\n"
-        return result
+        return result.rstrip("\n")
 
     def __str__(self):
         return self.draw_rectangle()
