@@ -9,8 +9,8 @@ def is_safe(board, row, col, n):
     return True
 
 def print_solution(board):
-    for row in range(len(board)):
-        line = "." * board[row] + "Q" + "." * (len(board) - board[row] - 1)
+    for row in board:
+        line = "." * row + "Q" + "." * (len(board) - row - 1)
         print(line)
 
 def solve_nqueens(board, row, n):
@@ -48,3 +48,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     nqueens(n)
+
