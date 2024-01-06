@@ -1,51 +1,46 @@
 #!/usr/bin/python3
 import sys
 
-def is_safe(board, row, col, n):
-    # Check for queens in the same column
-    for i in range(row):
-        if board[i] == col or board[i] - i == col - row or board[i] + i == col + row:
-            return False
-    return True
+def is_safe(board, row, col):
+   """Checks if placing a queen at (row, col) is safe."""
+   for i in range(row):
+       if board[i][col] == 1 or abs(row - i) == abs(col - board[i].index(1)):
+           return False
+   return True
 
-def print_solution(board):
-    for row in board:
-        line = "." * row + "Q" + "." * (len(board) - row - 1)
-        print(line)
+def solve_n_queens_util(board, row, n):
+   """Recursively solves the N-Queens problem using backtracking."""
+   if row == n:
+       # Print the solution in the required format
+       for i in range(n):
+           print("".join('.' * j + 'Q' + '.' * (n - j - 1) for j in range(n) if board[i][j] == 1))
+       print()
+       return
 
-def solve_nqueens(board, row, n):
-    if row == n:
-        print_solution(board)
-        print()
-        return
+   for col in range(n):
+       if is_safe(board, row, col):
+           board[row][col] = 1
+           solve_n_queens_util(board, row + 1, n)
+           board[row][col] = 0  # Backtrack
 
-    for col in range(n):
-        if is_safe(board, row, col, n):
-            board[row] = col
-            solve_nqueens(board, row + 1, n)
-
-def nqueens(n):
-    if not isinstance(n, int):
-        print("N must be a number")
-        sys.exit(1)
-
-    if n < 4:
-        print("N must be at least 4")
-        sys.exit(1)
-
-    board = [-1] * n
-    solve_nqueens(board, 0, n)
+def solve_n_queens(n):
+   """Starts the N-Queens problem solver."""
+   board = [[0] * n for _ in range(n)]
+   solve_n_queens_util(board, 0, n)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: nqueens N")
-        sys.exit(1)
+   if len(sys.argv) != 2:
+       print("Usage: nqueens N", file=sys.stderr)
+       sys.exit(1)
 
-    try:
-        n = int(sys.argv[1])
-    except ValueError:
-        print("N must be a number")
-        sys.exit(1)
+   try:
+       n = int(sys.argv[1])
+   except ValueError:
+       print("N must be a number", file=sys.stderr)
+       sys.exit(1)
 
-    nqueens(n)
+   if n < 4:
+       print("N must be at least 4", file=sys.stderr)
+       sys.exit(1)
 
+   solve_n_queens(n)
