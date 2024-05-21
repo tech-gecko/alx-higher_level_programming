@@ -1,0 +1,1 @@
+# This directory contains ALX tasks on the introduction to Structured Query Language (SQL).
