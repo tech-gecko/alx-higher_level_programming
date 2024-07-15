@@ -11,9 +11,10 @@ if __name__ == '__main__':
 
     req = Request(sys.argv[1])
     try:
-        response = urlopen(req)
+        with urlopen(req) as response:
+            body = response.read()
+            print(body.decode('utf-8'))
     except HTTPError as e:
         print('Error code: {}'.format(e.code))
     else:
-        body = response.read()
-        print(body.decode('utf-8'))
+        pass
