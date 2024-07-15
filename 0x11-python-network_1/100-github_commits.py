@@ -20,8 +20,9 @@ if __name__ == '__main__':
     r = requests.get(url, headers=headers)
     line_no = 0
 
-    for commit in r.json():
-        print("{}: {}".format(commit['sha'], commit['commit']['author']['name']))
+    # com means commit, hard to shorten for pycodestyle length issues.
+    for com in r.json():
+        print("{}: {}".format(com['sha'], com['commit']['author']['name']))
         line_no += 1
         if line_no == 10:
             break
